@@ -1,0 +1,368 @@
+
+<DOCTYPE! html>
+<!--
+
+      |
+          ||
+      __\ \||
+       __\ \||
+        __\ \||
+         __\ \|
+          __\ \
+             \ \
+              \ \
+               \ \
+              MMMMMMMMM                         MMMMMMMMM
+          MMMMMMMMMMMMMMMMMM               MMMMMMMMMMMMMMMMMM
+       MMMMMMMXXXXXXXXXXMMMMMMM         MMMMMMMXXXXXXXXXXMMMMMMM
+    MMMMMMXXXXXXXXXXXXXXXXXMMMMMM     MMMMMMXXXXXX:::::XXXXXXMMMMMM
+   MMMMMXXXXXXXX::::::::XXXXXXMMMM   MMMMXXXXXX:::::::::::XXXXXMMMMM
+  MMMMXXXXXXX:::::::::::::::XXXXMMM MMMXXXX::::::::::::::::::XXXXMMMM
+ MMMMXXXXXX::::::::::::::::::::XXXMMMXXX:::::::::::.....:::::::XXXMMMM
+ MMMXXXXX::::::::::::::::::::::::XXXXX:::::::::...........::::::XXXMMM
+MMMXXXXX:::::::::::.......:::::::::X::::::::......    ......::::XXXXMMM
+MMMXXXX:::::::::..............:::::::::::.......         ....::::XXXMMM
+MMMXXXX::::::::..................:::::.......             ...::::XXXMMM
+MMMXXXX:::::::.....................:............         ....::::XXXMMM
+MMMXXXX:::::::....................................       ....::::XXXMMM
+MMMXXXX:::::::......................................    .....::::XXXMMM
+MMMXXXXX::::::....................................... ......::::XXXXMMM
+MMMMXXXX:::::::.............................................::::XXXMMMM
+ MMMXXXX::::::::.......... <3 - s M a L L Nec RomAnce R......::::XXXMMM
+ MMMMXXXX::::::::............  Cheryl Acuna  ..............::::XXXMMMM
+  MMMXXXX::::::::::........................................:::::XXXMMM
+  MMMMXXXX:::::::::::...................................::::::XXXMMMM
+   MMMXXXXX::::::::::::..............................::::::::XXXXMMM
+   MMMMXXXXX:::::::::::::.........................::::::::::XXXXMMMM
+    MMMMXXXXX:::::::::::::::...................::::::::::::XXXXMMMM
+     MMMMXXXXX:::::::::::::::::.............::::::::::::::XXXXMMMM
+      MMMMXXXXXX::::::::::::::::::.......::::::::::::::XXXXXXMMMM
+       MMMMXXXXXXXX::::::::::::::::...::::::::::::::XXXXXXXXMMMM
+         MMMMXXXXXXXXX::::::::::::::::::::::\::::XXXXXXXXXMMMM
+           MMMMMXXXXXXXXXX:::::::::::::::::\ \XXXXXXXXXMMMMM
+              MMMMMMXXXXXXXXXXX:::::::::XXXX\ \XXXXMMMMMM
+                  MMMMMMXXXXXXXXXXX:XXXXXXXXX\ \MMMMM
+                      MMMMMMXXXXXXXXXXXXXXXMMM\ \
+                          MMMMMMXXXXXXXMMMMMM  \ \
+                              MMMMMXMMMMM       \ \
+                                 MMMMM           \ \   \
+                                  MMM             \ \ \\
+                                   M             \\\\\\\
+                                                   \\\\\
+                                                     \\\
+                                                       \       
+  -->
+<html lang="en">
+<head>
+<title>CHERYL ACU&Ntilde;A</title>
+<meta name="description" content="CHERYL ACU&Ntilde;A is an amateur necromancer posing as an artist in Chicago, IL.
+<meta name="category" content="art">
+<meta name="google-site-verification" content="wbtyQEpeEal-hnrQ_OahoASmFM07E0qcZLq11Sc2l88" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/183516/gilroy-webfont.css'>
+<style>
+  body {
+  font-family: "Gilroy ExtraBold", system-ui, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-kerning: normal;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  background: rgb(213,244,247);
+  background: radial-gradient(circle, rgba(213,244,247,1) 0%, rgba(230,189,247,1) 51%, rgba(245,206,206,1) 100%);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: perspective(60rem);
+          transform: perspective(60rem);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: rgba(255, 250, 250, 0.7);;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+  text-decoration:none;
+}
+
+a:hover { color:#ff9199;
+opacity: 0.5; }
+
+.Menu-list {
+  font-size: 6rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-transform: rotateX(-10deg) rotateY(20deg);
+          transform: rotateX(-10deg) rotateY(20deg);
+}
+
+.Menu-list-item {
+  position: relative;
+  color: transparent;
+  cursor: pointer;
+}
+.Menu-list-item::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 49%;
+  left: -10%;
+  right: -10%;
+  height: 4px;
+  border-radius: 4px;
+  margin-top: -2px;
+  background: rgba(255, 228, 225, 0.5);
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  transition: -webkit-transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98), -webkit-transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  z-index: 1;
+}
+
+.Mask {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  color: rgba(255, 228, 225, 0.5);
+  top: 0;
+  height: 49%;
+  transition: all 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+}
+.Mask span {
+  display: block;
+}
+
+.Mask + .Mask {
+  top: 48.9%;
+  height: 51.1%;
+}
+.Mask + .Mask span {
+  -webkit-transform: translateY(-49%);
+          transform: translateY(-49%);
+}
+
+.Menu-list-item:hover .Mask,
+.Menu-list-item:active .Mask {
+  color: rgba(255, 250, 250, 0.5);
+  -webkit-transform: skewX(12deg) translateX(5px);
+          transform: skewX(12deg) translateX(5px);
+}
+.Menu-list-item:hover .Mask + .Mask,
+.Menu-list-item:active .Mask + .Mask {
+  -webkit-transform: skewX(12deg) translateX(-5px);
+          transform: skewX(12deg) translateX(-5px);
+}
+.Menu-list-item:hover::before,
+.Menu-list-item:active::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+#strawberry {
+    position: absolute;
+    display: block;
+    margin:0;
+    margin-left:145px;
+    width: 60px;
+    height:auto;
+    content: url('strawberryroll.gif');
+}
+
+#info {
+    position: absolute;
+    margin-left: 5px;
+    display: none;
+    color: rgba(255, 250, 250, 0.7);
+    text-align:center;
+}
+
+
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+
+<body translate="no">
+
+<div id="strawberry"></div><br><br><br>
+<div class="Menu">
+
+<ul class="Menu-list" data-offset="10">
+<li class="Menu-list-item" id="myinfo" data-offset="20">
+cheryl
+<span class="Mask"><span>cheryl</span></span>
+<span class="Mask"><span>cheryl</span></span>
+</li>
+</ul>
+
+<div id="info"> <a href="mailto:cacuna@artic.edu">cacuna@artic.edu</a> // <a href="http://instagram.com/h.naoto_blood_bolero">@h.naoto_blood_bolero</a> <br><br>
+<a href="https://vimeo.com/smallnecromancer">vimeo</a> // <a href="https://cargocollective.com/smallnecromancer">design</a>
+</div>
+
+</div>
+
+
+<script>
+$(document).ready(function(){
+  $("#myinfo").click(function(){
+    $("#info").fadeIn("slow");
+  });
+});
+</script>
+
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script id="rendered-js">
+      var $menu = $('.Menu-list'),
+$item = $('.Menu-list-item'),
+w = $(window).width(), //window width
+h = $(window).height(); //window height
+
+$(window).on('mousemove', function (e) {
+  var offsetX = 0.5 - e.pageX / w, //cursor position X
+  offsetY = 0.5 - e.pageY / h, //cursor position Y
+  dy = e.pageY - h / 2, //@h/2 = center of poster
+  dx = e.pageX - w / 2, //@w/2 = center of poster
+  theta = Math.atan2(dy, dx), //angle between cursor and center of poster in RAD
+  angle = theta * 180 / Math.PI - 90, //convert rad in degrees
+  offsetPoster = $menu.data('offset'),
+  transformPoster = 'translate3d(0, ' + -offsetX * offsetPoster + 'px, 0) rotateX(' + -offsetY * offsetPoster + 'deg) rotateY(' + offsetX * (offsetPoster * 2) + 'deg)'; //poster transform
+
+  //get angle between 0-360
+  if (angle < 0) {
+    angle = angle + 360;
+  }
+
+  //poster transform
+  $menu.css('transform', transformPoster);
+
+  //parallax for each layer
+  $item.each(function () {
+    var $this = $(this),
+    offsetLayer = $this.data('offset') || 0,
+    transformLayer = 'translate3d(' + offsetX * offsetLayer + 'px, ' + offsetY * offsetLayer + 'px, 20px)';
+
+    $this.css('transform', transformLayer);
+  });
+});
+      //# sourceURL=pen.js
+    </script>
+<script language="javascript" type="text/javascript">
+
+var no = 50;
+var speed = 15;
+var ie4up = (document.all) ? 1 : 0;
+var ns4up = !ie4up;
+var s, x, y, sn, cs;
+var a, r, cx, cy;
+var i, doc_width = 800, doc_height = 600;
+if (ns4up) {
+doc_width = self.innerWidth;
+doc_height = self.innerHeight;
+}
+else
+if (ie4up) {
+doc_width = document.body.clientWidth;
+doc_height = document.body.clientHeight;
+}
+x = new Array();
+y = new Array();
+r = new Array();
+cx = new Array();
+cy = new Array();
+s = 8;
+for (i = 0; i < no; ++ i) {
+initRain();
+document.write("<div id=\"dot"+ i +"\" style=\"POSITION: ");
+document.write("absolute; Z-INDEX: "+ i +"; VISIBILITY: ");
+document.write("visible; TOP: 15px; LEFT: 15px;\"><font color=\"#ff9199\" size=\"5px\">");
+document.write(",</font></div>");
+}
+function initRain() {
+a = 6;
+r[i] = 1;
+sn = Math.sin(a);
+cs = Math.cos(a);
+cx[i] = Math.random() * doc_width + 1;
+cy[i] = Math.random() * doc_height + 1;
+x[i] = r[i] * sn + cx[i];
+y[i] = cy[i];
+}
+function makeRain() {
+r[i] = 1;
+cx[i] = Math.random() * doc_width + 1;
+cy[i] = 1;
+x[i] = r[i] * sn + cx[i];
+y[i] = r[i] * cs + cy[i];
+}
+function updateRain() {
+r[i] += s;
+x[i] = r[i] * sn + cx[i];
+y[i] = r[i] * cs + cy[i];
+}
+function raindropNS() {
+for (i = 0; i < no; ++ i) {
+updateRain();
+if ((x[i] <= 1) || (x[i] >= (doc_width - 20)) || (y[i] >= (doc_height - 20))) {
+makeRain();
+doc_width = self.innerWidth;
+doc_height = self.innerHeight;
+}
+document.getElementById("dot"+i).style.top = y[i];
+document.getElementById("dot"+i).style.left = x[i];
+}
+setTimeout("raindropNS()", speed);
+}
+function raindropIE() {
+for (i = 0; i < no; ++ i) {
+updateRain();
+if ((x[i] <= 1) || (x[i] >= (doc_width - 20)) || (y[i] >= (doc_height - 20))) {
+makeRain();
+doc_width = document.body.clientWidth;
+doc_height = document.body.clientHeight;
+}
+document.all["dot"+i].style.pixelTop = y[i];
+document.all["dot"+i].style.pixelLeft = x[i];
+}
+setTimeout("raindropIE()", speed);
+}
+if (ns4up) {
+raindropNS();
+}
+else
+if (ie4up) {
+raindropIE();
+}
+</script>
+
+
+
+</body>
+</html>
