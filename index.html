@@ -92,7 +92,7 @@ body {
 }
 
 a {
-  color: rgba(255, 145, 153, 0.5);
+  color: rgba(255, 145, 153, 0.4);
   -o-transition:.5s;
   -ms-transition:.5s;
   -moz-transition:.5s;
@@ -193,7 +193,7 @@ opacity: 1; }
 
 #info {
     margin-top:-10px;
-    margin-left: 5px;
+    margin-left: 7px;
     position: absolute;
     width:30rem;
     height:auto;
@@ -277,7 +277,7 @@ $(document).ready(function(event){
 
 
       // array with texts to type in typewriter
-  var dataText = [ "Hi hi ! ", "My name is Cheryl Acuña ! ", "I do a bunch of stuff ", "like," , "front-end web development," , "live visuals," , "garment construction," , "wood & metal fabrication . . ." , "my portfolio is still in ~ construction ~ but ~ !" , "you can view my CV " + cvLink + " or email me " + eLink + " ~ ~ thxu ! ~ ~ xoxox"];
+  var dataText = [ "Hi hi ! ", "My name is Cheryl Acuña ! ", "I do a bunch of stuff ", "like," , "front-end web development , live visuals , garment construction , wood & metal fabrication . . ." , "my portfolio is in ~ construction ~ but ~ !" , "you can view my CV " + cvLink + " or email me " + eLink + " ~ ! ~ ✿ ✿ ✿ ~ ! ~ xoxox"];
   
   // type one text in the typwriter
   // keeps calling itself until the text is finished
@@ -303,7 +303,7 @@ $(document).ready(function(event){
      if (typeof dataText[i] == 'undefined'){
         setTimeout(function() {
           StartTextAnimation(0);
-        }, 20000);
+        }, 50000);
      }
      // check if dataText[i] exists
     if (i < dataText[i].length) {
