@@ -272,7 +272,7 @@ $(document).ready(function(event){
 {
       $("#info").fadeIn("slow");
 
- var cvLink = '<a href="https://drive.google.com/file/d/1m3KtBSfn2e0riqr7LYCoUADvKYR4gRyp/view?usp=sharing">here</a>';
+ var cvLink = '<a href="https://bit.ly/2rwdET5">here</a>';
  var eLink = '<a href="mailto:cacuna@artic.edu">here</a>';
 
 
@@ -292,6 +292,7 @@ $(document).ready(function(event){
         typeWriter(text, i + 1, fnCallback)
       }, 100);
     }
+
     // text finished, call callback if there is a callback function
     else if (typeof fnCallback == 'function') {
       // call callback after timeout
@@ -303,8 +304,16 @@ $(document).ready(function(event){
      if (typeof dataText[i] == 'undefined'){
         setTimeout(function() {
           StartTextAnimation(0);
-        }, 50000);
+        }, 80000);
      }
+
+  // skip variable printing
+    if (typeof dataText[i] == cvLink , eLink){
+      setTimeout(function() {
+        typeWriter(text, i + 1, fnCallback)
+      }, 0);
+    }
+
      // check if dataText[i] exists
     if (i < dataText[i].length) {
       // text exists! start typewriter animation
@@ -313,11 +322,15 @@ $(document).ready(function(event){
        StartTextAnimation(i + 1);
      });
     }
+
   }
+
   // start the text animation
   StartTextAnimation(0);
 
 }
+
+
 //    else
 // {
 //       $("#info").fadeOut("slow");
