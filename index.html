@@ -69,7 +69,7 @@ MMMMXXXX:::::::.............................................::::XXXMMMM
   font-style: normal;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
-  -webkit-font-kerning: normal;
+  -webkit-font-kerning: -35px;
   -webkit-text-size-adjust: auto%;
 }
 
@@ -81,7 +81,7 @@ body {
 
 body {
   background: rgb(213,244,247);
-  background: radial-gradient(circle, rgba(213,244,247,1) 0%, rgba(230,189,247,1) 51%, rgba(245,206,206,1) 100%);
+  background: radial-gradient(circle, rgba(213,244,247,1) 0%, rgba(245,206,206,1) 100%);
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-transform: perspective(60rem);
@@ -101,6 +101,7 @@ a {
   /* ...and now for the proper property */
   transition:.5s;
   text-decoration:none;
+  font-weight: bold;
 }
 
 a:hover {
@@ -110,6 +111,7 @@ opacity: 1; }
 .Menu-list {
   font-size: 8rem;
   line-height: 1.2;
+  letter-spacing: -35px;
   text-transform: uppercase;
   text-align: center;
   display: flex;
@@ -186,15 +188,14 @@ opacity: 1; }
     position: absolute;
     display: block;
     margin:0;
-    margin-left:200px;
-    width: 90px;
-    height:auto;
-    content: url('LovePotionBottleHeartWings.gif');
+    margin-left:220px;
+/*    width: 90px;
+*/    height:auto;
+    content: url('RAM-icon.png');
 }
 
 #info {
     margin-top:-10px;
-    margin-left: 7px;
     position: absolute;
     width:30rem;
     height:auto;
@@ -246,14 +247,13 @@ h2 {
 
 <body translate="no">
 
-<div id="strawberry"></div><br><br><br><br><br>
-
+<div id="strawberry"></div><br>
 <div class="Menu">
 <ul class="Menu-list" data-offset="10">
-<li class="Menu-list-item" id="myinfo" data-offset="20">
-𝕹𝕰𝕮𝕽𝕺
-<span class="Mask"><span>𝕹𝕰𝕮𝕽𝕺</span></span>
-<span class="Mask"><span>𝕹𝕰𝕮𝕽𝕺</span></span>
+<li class="Menu-list-item" id="myinfo" data-offset="20"> 𝕮𝕺𝖂𝕬𝕽𝕯
+
+<span class="Mask"><span>𝕮𝕺𝖂𝕬𝕽𝕯</span></span>
+<span class="Mask"><span>𝕮𝕺𝖂𝕬𝕽𝕯</span></span>
 </li>
 </ul>
 <div id="info">
@@ -283,7 +283,7 @@ $(document).ready(function(event){
 
 
       // array with texts to type in typewriter
-  var dataText = [ "Hi hi ! ", "My name is Cheryl Acuña ! ", "I do a bunch of stuff ", "like," , "front-end web development , live visuals , garment construction , wood & metal fabrication . . ." , "my portfolio is in ~ construction ~ but ~ !" , "you can view my CV " + cvLink + " or email me " + eLink + " ~ ! ~ ✿ ✿ ✿ ~ ! ~ xoxox"];
+  var dataText = [ '<a href="https://discord.gg/daAFFw5">discord.gg/daAFFw5</a>' ];
 
   // type one text in the typwriter
   // keeps calling itself until the text is finished
