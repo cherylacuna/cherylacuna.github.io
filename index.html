@@ -204,7 +204,7 @@ The priest winced. “No, no! It is not the pain that is pleasing to God, child.
                 let position = -marqueeCyan.offsetHeight; // Start off the screen
 
                 function step() {
-                    position += 1; // Move down 1 pixel each frame
+                    position += 2; // Move down 1 pixel each frame
                     marqueeCyan.style.transform = `translateY(${position}px) rotate(180deg)`; // Rotated text
 
                     // Reset position when off-screen
@@ -224,7 +224,7 @@ The priest winced. “No, no! It is not the pain that is pleasing to God, child.
                 let position = height; // Start at the bottom
 
                 function step() {
-                    position -= 1; // Move up 1 pixel each frame
+                    position -= 2; // Move up 1 pixel each frame
                     marqueeFuchsia.style.transform = `translateY(${position}px)`;
 
                     // Reset position when off-screen
