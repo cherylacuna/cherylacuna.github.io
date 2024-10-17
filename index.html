@@ -56,49 +56,191 @@ MMMMXXXX:::::::.............................................::::XXXMMMM
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cheryl acuna</title>
+    <title>Cheryl Acuña</title>
     <style>
         body {
-            background: white;
             font-family: 'Times New Roman', Times, serif;
             font-size: 12pt;
             text-align: left;
             margin: 0;
             padding: 20px;
             font-style: italic;
+            overflow: hidden; /* Prevent scrolling */
+            position: relative; /* Allow absolute positioning of children */
         }
-        img {
-            display: block;
-            margin: 0 auto 20px;
-            float: left;
-            height: auto; /* Maintains aspect ratio */
+
+        /* Style for the image */
+        .info img {
+            float: left; /* Float the image to the left */
+            margin-right: 15px; /* Space between the image and text */
+            height: auto; /* Maintain aspect ratio */
+            width: 100px; /* Set a fixed width */
         }
+
         a {
-            color: blue; /* Link color */
-            text-decoration: none; /* Remove underline */
-            border-bottom: 1px dotted fuchsia; /* Dotted bottom border */
-            padding-bottom: 2px; /* Space between text and border */
+            color: blue;
+            text-decoration: none;
+            border-bottom: 1px dotted fuchsia;
         }
+
         a:hover {
-            background-color: fuchsia; /* Background color on hover */
-            color: white; /* Change text color on hover */
-            padding: 2px 5px; /* Add padding for better appearance */
+            background-color: fuchsia;
+            color: white;
+            padding: 2px 5px;
+        }
+
+        .info {
+            position: relative;
+            z-index: 0; /* Below the marquee */
+        }
+
+        .marquee-container {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* First Marquee (cyan) - scrolling from top to bottom */
+        .marquee {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: black;
+            white-space: nowrap;
+            right: 15%; /* Adjusted to position closer to fuchsia */
+            writing-mode: vertical-rl; /* Vertical text */
+            transform: rotate(180deg); /* Rotate text 180 degrees */
+        }
+
+        /* Second Marquee (fuchsia) - scrolling from bottom to top */
+        .marquee-fuchsia {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: black;
+            white-space: nowrap;
+            right: 10%;
+            writing-mode: vertical-rl; /* Vertical text */
+        }
+
+        /* Asterisk colors */
+        .asterisk-cyan {
+            color: cyan; /* Cyan for the first marquee */
+        }
+
+        .asterisk-fuchsia {
+            color: fuchsia; /* Fuchsia for the second marquee */
+        }
+
+        /* Bibliography styling */
+        .bibliography {
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            padding: 10px;
+            font-size: 0.9rem;
+            color: black;
+            background-color: white;
+            z-index: 2;
+            text-align: right;
+        }
+
+        .asterisk-fuchsia-citation {
+            color: fuchsia;
+        }
+
+        .asterisk-cyan-citation {
+            color: cyan;
         }
     </style>
 </head>
 <body>
 
-    <div>
-   <img src="Then-icon.png"><br><br>
+    <div class="marquee-container">
+        <!-- First Marquee (Cyan) -->
+        <div class="marquee" id="marquee-cyan">
+            <span class="asterisk-cyan">*</span> “I cannot understand a God who is pleased by my baby’s hurting!” The priest winced. “No, no! It is not the pain that is pleasing to God, child..."
+        </div>
+
+        <!-- Second Marquee (Fuchsia) -->
+        <div class="marquee-fuchsia" id="marquee-fuchsia">
+            <span class="asterisk-fuchsia">*</span> As for the fact of a sin, is it probable that anything cancels it? All times are eternally present to God...
+        </div>
+    </div>
+
+  
+      
+        <img src="Then-icon.png" alt="cheryl acuna" title="cheryl acuna">
+         <div class="info">
         <p>BFA 2021 School of the Art Institute of Chicago<br>
             MLIS 2026 University of California, Los Angeles<br><br>
             cherylacuna[@]gmail[.]com<br>
-       [<a href="https://instagram.com/aliexpress_lucite_stiletto">ig</a>] [<a href="CV"coming soon</a>] [<a href="https://iwantyoutobemine.com">blmp</a>] [<a href="collections">also coming soon</a>]</p>
-      
+            [<a href="https://instagram.com/aliexpress_lucite_stiletto">ig</a>] 
+            [<a href="CV">coming soon</a>] 
+            [<a href="https://iwantyoutobemine.com">blmp</a>] 
+            [<a href="collections">also coming soon</a>]
+        </p>
     </div>
+
+    <!-- Bibliography div positioned at the bottom right -->
+    <div class="bibliography">
+        <p><span class="asterisk-fuchsia-citation">*</span> Lewis, C. S. <i>The Problem of Pain</i>. New York: HarperOne, 2001.</p>
+        <p><span class="asterisk-cyan-citation">*</span> Miller, Walter M. Jr. <i>A Canticle for Leibowitz</i>. New York: Bantam Books, 1997.</p>
+    </div>
+
     <script>
-        // JavaScript can be added here if needed
-        console.log('Page loaded successfully');
+        function startMarquee() {
+            const marqueeCyan = document.getElementById('marquee-cyan');
+            const marqueeFuchsia = document.getElementById('marquee-fuchsia');
+
+            // Cyan marquee: scrolls from top to bottom
+            function animateCyanMarquee() {
+                const height = window.innerHeight;
+                let position = -marqueeCyan.offsetHeight; // Start off the screen
+
+                function step() {
+                    position += 1; // Move down 1 pixel each frame
+                    marqueeCyan.style.transform = `translateY(${position}px) rotate(180deg)`; // Rotated text
+
+                    // Reset position when off-screen
+                    if (position > height) {
+                        position = -marqueeCyan.offsetHeight;
+                    }
+
+                    requestAnimationFrame(step);
+                }
+
+                step();
+            }
+
+            // Fuchsia marquee: scrolls from bottom to top using translateY for smoothness
+            function animateFuchsiaMarquee() {
+                const height = window.innerHeight;
+                let position = height; // Start at the bottom
+
+                function step() {
+                    position -= 1; // Move up 1 pixel each frame
+                    marqueeFuchsia.style.transform = `translateY(${position}px)`;
+
+                    // Reset position when off-screen
+                    if (position < -marqueeFuchsia.offsetHeight) {
+                        position = height;
+                    }
+
+                    requestAnimationFrame(step);
+                }
+
+                step();
+            }
+
+            animateCyanMarquee();
+            animateFuchsiaMarquee();
+        }
+
+        // Start both marquees when the page loads
+        window.onload = startMarquee;
     </script>
 </body>
 </html>
