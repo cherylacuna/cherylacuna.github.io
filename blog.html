@@ -64,6 +64,22 @@
                 margin-top: 5px;
             }
         }
+
+        /* Fixed div for disclaimer */
+        .disclaimer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            font-size: 8pt;
+            padding: 5px;
+        }
+        .disclaimer .asterisk {
+            color: cyan;
+        }
+        .disclaimer .text {
+            color: black;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -90,6 +106,11 @@ But I'll only drink whole milk even though the calories are more than I like to 
         </div>
 
         <!-- More blog entries can be added here -->
+    </div>
+    
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <span class="asterisk">*</span><span class="text">all writings are works of fiction</span>
     </div>
 </body>
 </html>
