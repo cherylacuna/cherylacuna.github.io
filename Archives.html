@@ -40,30 +40,35 @@
 }
 
 /* Hover colors */
-.letter:hover {
-    opacity: 0.7; /* Reduces opacity slightly on hover */
-}
-
-.letter-pink:hover {
-    color: #ff69b4; /* Pink */
-}
-
-.letter-purple:hover {
-    color: #800080; /* Purple */
-}
-
-.letter-orange:hover {
-    color: #ffa500; /* Orange */
-}
-
-.letter-blue:hover {
-    color: #007bff; /* Blue */
-}
-
 .line .sentence {
     font-size: 1.5rem; /* Regular size for sentences */
 }
 
+ .letter:hover,
+.letter:active {
+    opacity: 0.7; /* Reduces opacity slightly on hover or touch */
+}
+
+.letter-pink:hover,
+.letter-pink:active {
+    color: #ff69b4; /* Pink */
+}
+
+.letter-purple:hover,
+.letter-purple:active {
+    color: #800080; /* Purple */
+}
+
+.letter-orange:hover,
+.letter-orange:active {
+    color: #ffa500; /* Orange */
+}
+
+.letter-blue:hover,
+.letter-blue:active {
+    color: #007bff; /* Blue */
+}
+        
 /* OS-style window container */
 .os-window {
     position: fixed; /* Allows dynamic positioning */
