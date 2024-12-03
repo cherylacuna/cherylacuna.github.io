@@ -164,9 +164,24 @@
         Z: "Zen is the art of letting go."
     };
 
+    const boxContent = {
+        A: `
+            <p>A is for Archive, a group of things alike. Compiled by some person, some group or organization: an archive shows us what we had in the past when life was different.</p>
+            <p>Put together like a puzzle, we prioritize the source. With manuscripts and letters, with files and reports—an archive brings together whatever we decide to sort.</p>
+        `,
+        B: `
+            <p>B is for Bliss, a state of calm and peace.</p>
+            <p>When everything aligns, the chaos seems to cease.</p>
+        `,
+        C: `
+            <p>C is for Community, a gathering of souls.</p>
+            <p>Together we achieve what we couldn’t as wholes.</p>
+        `
+        // Add more custom content for other letters here...
+    };
+
     const container = document.getElementById("poem-container");
 
-    // Hover color assignment and alphabet rendering
     for (const [letter, sentence] of Object.entries(poem)) {
         const line = document.createElement("div");
         line.classList.add("line");
@@ -194,15 +209,6 @@
         container.appendChild(line);
     }
 
-    // Define content for each letter box
-    const boxContent = {
-        A: "A is for Archive, a group of things alike. Compiled by some person, some group or organization: an archive shows us what we had in the past when life was different. <br> <br> Put together like a puzzle, we prioritize the source. With manuscripts and letters, with files and reports—an archive brings together whatever we decide to sort.",
-        B: "B is for Bliss, a state of calm and peace.\n\nWhen everything aligns, the chaos seems to cease.",
-        C: "C is for Community, a gathering of souls.\n\nTogether we achieve what we couldn’t as wholes.",
-        // Add more custom content for other letters here...
-    };
-
-    // Function to create a unique "window" at a random position
     function createWindow(letter) {
         // Generate random position within the viewport
         const randomX = Math.floor(Math.random() * (window.innerWidth - 320)); // Account for window width
@@ -218,7 +224,7 @@
         // Create the title bar
         const titleBar = document.createElement("div");
         titleBar.classList.add("title-bar");
-        titleBar.textContent = `${letter} is for ... `;
+        titleBar.textContent = `Window - ${letter}`;
 
         // Create the close button
         const closeButton = document.createElement("button");
@@ -233,8 +239,8 @@
         const content = document.createElement("div");
         content.classList.add("window-content");
 
-        // Set the content to the specific message for the letter, or a default message if not defined
-        content.textContent = boxContent[letter] || `You clicked on ${letter}. No specific content defined for this letter.`;
+        // Use innerHTML to render content with HTML tags like <br> or <p>
+        content.innerHTML = boxContent[letter] || `<p>You clicked on ${letter}. No specific content defined for this letter.</p>`;
         windowDiv.appendChild(content);
 
         // Append the window to the body
