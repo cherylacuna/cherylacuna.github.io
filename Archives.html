@@ -143,6 +143,36 @@
 <body>
     <div id="poem-container"></div>
     <script>
+    const hoverColors = ["letter-pink", "letter-purple", "letter-orange", "letter-blue"];
+let colorIndex = 0; // Keeps track of the current color to apply
+
+for (const [letter, sentence] of Object.entries(poem)) {
+    const line = document.createElement("div");
+    line.classList.add("line");
+
+    const letterElement = document.createElement("a");
+    letterElement.classList.add("letter", hoverColors[colorIndex]); // Add hover color class
+    letterElement.href = "#"; // Prevent default link behavior
+    letterElement.textContent = letter;
+
+    // Cycle through the hover colors
+    colorIndex = (colorIndex + 1) % hoverColors.length;
+
+    // Add click event to create a window
+    letterElement.onclick = (e) => {
+        e.preventDefault(); // Prevent navigation
+        createWindow(letter);
+    };
+
+    const sentenceElement = document.createElement("div");
+    sentenceElement.classList.add("sentence");
+    sentenceElement.textContent = sentence;
+
+    line.appendChild(letterElement);
+    line.appendChild(sentenceElement);
+    container.appendChild(line);
+}
+
       const poem = {
     A: "is for Archive, a group of things alike.",
     B: "is for the Bliss that comes in quiet moments.",
