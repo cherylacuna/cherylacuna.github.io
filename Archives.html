@@ -142,130 +142,105 @@
 </head>
 <body>
     <div id="poem-container"></div>
-    <script>
+   <script>
     const hoverColors = ["letter-pink", "letter-purple", "letter-orange", "letter-blue"];
-let colorIndex = 0; // Keeps track of the current color to apply
+    let colorIndex = 0; // Keeps track of the current color to apply
 
-for (const [letter, sentence] of Object.entries(poem)) {
-    const line = document.createElement("div");
-    line.classList.add("line");
-
-    const letterElement = document.createElement("a");
-    letterElement.classList.add("letter", hoverColors[colorIndex]); // Add hover color class
-    letterElement.href = "#"; // Prevent default link behavior
-    letterElement.textContent = letter;
-
-    // Cycle through the hover colors
-    colorIndex = (colorIndex + 1) % hoverColors.length;
-
-    // Add click event to create a window
-    letterElement.onclick = (e) => {
-        e.preventDefault(); // Prevent navigation
-        createWindow(letter);
+    const poem = {
+        A: "is for Archive, a group of things alike.",
+        B: "is for the Bliss that comes in quiet moments.",
+        C: "is for Community, the place we tend to be.",
+        D: "is blah blah blah.",
+        E: "Every ending hides a new beginning.",
+        F: "Friendship is the golden thread of life.",
+        G: "Growth starts with struggle.",
+        H: "Hope is a lighthouse in the fog.",
+        I: "Imagination unlocks hidden worlds.",
+        J: "Joy is found in the smallest things.",
+        K: "Kindness echoes through eternity.",
+        L: "Love blooms in unexpected places.",
+        M: "Memories are treasures in time.",
+        N: "Nature whispers secrets to the heart.",
+        O: "Opportunities hide in the ordinary.",
+        P: "Patience carves rivers through stone.",
+        Q: "Questions lead us to answers.",
+        R: "Resilience is the heart’s true strength.",
+        S: "Silence speaks when words fail.",
+        T: "Time is the author of all stories.",
+        U: "Unity makes the impossible real.",
+        V: "Virtues shine brighter than jewels.",
+        W: "Wisdom grows in quiet reflection.",
+        X: "X marks the spot of hidden truths.",
+        Y: "Youth holds the keys to wonder.",
+        Z: "Zen is the art of letting go."
     };
 
-    const sentenceElement = document.createElement("div");
-    sentenceElement.classList.add("sentence");
-    sentenceElement.textContent = sentence;
+    const container = document.getElementById("poem-container");
 
-    line.appendChild(letterElement);
-    line.appendChild(sentenceElement);
-    container.appendChild(line);
-}
+    for (const [letter, sentence] of Object.entries(poem)) {
+        const line = document.createElement("div");
+        line.classList.add("line");
 
-      const poem = {
-    A: "is for Archive, a group of things alike.",
-    B: "is for the Bliss that comes in quiet moments.",
-    C: "is for Community, the place we tend to be.",
-    D: "is blah blah blah.",
-    E: "Every ending hides a new beginning.",
-    F: "Friendship is the golden thread of life.",
-    G: "Growth starts with struggle.",
-    H: "Hope is a lighthouse in the fog.",
-    I: "Imagination unlocks hidden worlds.",
-    J: "Joy is found in the smallest things.",
-    K: "Kindness echoes through eternity.",
-    L: "Love blooms in unexpected places.",
-    M: "Memories are treasures in time.",
-    N: "Nature whispers secrets to the heart.",
-    O: "Opportunities hide in the ordinary.",
-    P: "Patience carves rivers through stone.",
-    Q: "Questions lead us to answers.",
-    R: "Resilience is the heart’s true strength.",
-    S: "Silence speaks when words fail.",
-    T: "Time is the author of all stories.",
-    U: "Unity makes the impossible real.",
-    V: "Virtues shine brighter than jewels.",
-    W: "Wisdom grows in quiet reflection.",
-    X: "X marks the spot of hidden truths.",
-    Y: "Youth holds the keys to wonder.",
-    Z: "Zen is the art of letting go."
-};
+        const letterElement = document.createElement("a");
+        letterElement.classList.add("letter", hoverColors[colorIndex]); // Add hover color class
+        letterElement.href = "#"; // Prevent default link behavior
+        letterElement.textContent = letter;
 
-const container = document.getElementById("poem-container");
+        // Cycle through the hover colors
+        colorIndex = (colorIndex + 1) % hoverColors.length;
 
-// Function to create a unique "window" at a random position
-function createWindow(letter) {
-    // Generate random position within the viewport
-    const randomX = Math.floor(Math.random() * (window.innerWidth - 320)); // Account for window width
-    const randomY = Math.floor(Math.random() * (window.innerHeight - 200)); // Account for window height
+        // Add click event to create a window
+        letterElement.onclick = (e) => {
+            e.preventDefault(); // Prevent navigation
+            createWindow(letter);
+        };
 
-    // Create the window container
-    const windowDiv = document.createElement("div");
-    windowDiv.classList.add("os-window");
-    windowDiv.id = `window-${letter}`;
-    windowDiv.style.left = `${randomX}px`;
-    windowDiv.style.top = `${randomY}px`;
+        const sentenceElement = document.createElement("div");
+        sentenceElement.classList.add("sentence");
+        sentenceElement.textContent = sentence;
 
-    // Create the title bar
-    const titleBar = document.createElement("div");
-    titleBar.classList.add("title-bar");
-    titleBar.textContent = `Window - ${letter}`;
+        line.appendChild(letterElement);
+        line.appendChild(sentenceElement);
+        container.appendChild(line);
+    }
 
-    // Create the close button
-    const closeButton = document.createElement("button");
-    closeButton.classList.add("close-btn");
-    closeButton.textContent = "X";
-    closeButton.onclick = () => windowDiv.remove(); // Remove window when clicked
+    // Function to create a unique "window" at a random position
+    function createWindow(letter) {
+        // Generate random position within the viewport
+        const randomX = Math.floor(Math.random() * (window.innerWidth - 320)); // Account for window width
+        const randomY = Math.floor(Math.random() * (window.innerHeight - 200)); // Account for window height
 
-    titleBar.appendChild(closeButton);
-    windowDiv.appendChild(titleBar);
+        // Create the window container
+        const windowDiv = document.createElement("div");
+        windowDiv.classList.add("os-window");
+        windowDiv.id = `window-${letter}`;
+        windowDiv.style.left = `${randomX}px`;
+        windowDiv.style.top = `${randomY}px`;
 
-    // Create the content of the window
-    const content = document.createElement("div");
-    content.classList.add("window-content");
-    content.textContent = `You clicked on ${letter}. This is a unique message for the letter ${letter}!`;
-    windowDiv.appendChild(content);
+        // Create the title bar
+        const titleBar = document.createElement("div");
+        titleBar.classList.add("title-bar");
+        titleBar.textContent = `Window - ${letter}`;
 
-    // Append the window to the body
-    document.body.appendChild(windowDiv);
-}
+        // Create the close button
+        const closeButton = document.createElement("button");
+        closeButton.classList.add("close-btn");
+        closeButton.textContent = "X";
+        closeButton.onclick = () => windowDiv.remove(); // Remove window when clicked
 
-// Render the poem and assign event listeners to letters
-for (const [letter, sentence] of Object.entries(poem)) {
-    const line = document.createElement("div");
-    line.classList.add("line");
+        titleBar.appendChild(closeButton);
+        windowDiv.appendChild(titleBar);
 
-    const letterElement = document.createElement("a");
-    letterElement.classList.add("letter");
-    letterElement.href = "#"; // Prevent default link behavior
-    letterElement.textContent = letter;
+        // Create the content of the window
+        const content = document.createElement("div");
+        content.classList.add("window-content");
+        content.textContent = `You clicked on ${letter}. This is a unique message for the letter ${letter}!`;
+        windowDiv.appendChild(content);
 
-    // Add click event to create a window
-    letterElement.onclick = (e) => {
-        e.preventDefault(); // Prevent navigation
-        createWindow(letter);
-    };
+        // Append the window to the body
+        document.body.appendChild(windowDiv);
+    }
+</script>
 
-    const sentenceElement = document.createElement("div");
-    sentenceElement.classList.add("sentence");
-    sentenceElement.textContent = sentence;
-
-    line.appendChild(letterElement);
-    line.appendChild(sentenceElement);
-    container.appendChild(line);
-}
-
-    </script>
 </body>
 </html>
