@@ -486,42 +486,66 @@ Reflection for the future of the time that it has served
     }
 
     function createWindow(letter) {
-        // Generate random position within the viewport
-        const randomX = Math.floor(Math.random() * (window.innerWidth - 320)); // Account for window width
-        const randomY = Math.floor(Math.random() * (window.innerHeight - 200)); // Account for window height
+    // Generate random position within the viewport
+    const randomX = Math.floor(Math.random() * (window.innerWidth - 320)); // Account for window width
+    const randomY = Math.floor(Math.random() * (window.innerHeight - 200)); // Account for window height
 
-        // Create the window container
-        const windowDiv = document.createElement("div");
-        windowDiv.classList.add("os-window");
-        windowDiv.id = `window-${letter}`;
-        windowDiv.style.left = `${randomX}px`;
-        windowDiv.style.top = `${randomY}px`;
+    // Create the window container
+    const windowDiv = document.createElement("div");
+    windowDiv.classList.add("os-window");
+    windowDiv.id = `window-${letter}`;
+    windowDiv.style.left = `${randomX}px`;
+    windowDiv.style.top = `${randomY}px`;
 
-        // Create the title bar
-        const titleBar = document.createElement("div");
-        titleBar.classList.add("title-bar");
-        titleBar.textContent = `${letter} is for ...`;
+    // Create the title bar
+    const titleBar = document.createElement("div");
+    titleBar.classList.add("title-bar");
+    titleBar.textContent = `Window - ${letter}`;
 
-        // Create the close button
-        const closeButton = document.createElement("button");
-        closeButton.classList.add("close-btn");
-        closeButton.textContent = "X";
-        closeButton.onclick = () => windowDiv.remove(); // Remove window when clicked
+    // Make the window draggable
+    titleBar.addEventListener("mousedown", (e) => {
+        let shiftX = e.clientX - windowDiv.getBoundingClientRect().left;
+        let shiftY = e.clientY - windowDiv.getBoundingClientRect().top;
 
-        titleBar.appendChild(closeButton);
-        windowDiv.appendChild(titleBar);
+        function moveAt(pageX, pageY) {
+            windowDiv.style.left = pageX - shiftX + "px";
+            windowDiv.style.top = pageY - shiftY + "px";
+        }
 
-        // Create the content of the window
-        const content = document.createElement("div");
-        content.classList.add("window-content");
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
 
-        // Use innerHTML to render content with HTML tags like <br> or <p>
-        content.innerHTML = boxContent[letter] || `<p>You clicked on ${letter}. No specific content defined for this letter.</p>`;
-        windowDiv.appendChild(content);
+        document.addEventListener("mousemove", onMouseMove);
 
-        // Append the window to the body
-        document.body.appendChild(windowDiv);
-    }
+        document.addEventListener("mouseup", () => {
+            document.removeEventListener("mousemove", onMouseMove);
+        }, { once: true });
+    });
+
+    titleBar.ondragstart = () => false; // Disable default drag behavior
+
+    // Create the close button
+    const closeButton = document.createElement("button");
+    closeButton.classList.add("close-btn");
+    closeButton.textContent = "X";
+    closeButton.onclick = () => windowDiv.remove(); // Remove window when clicked
+
+    titleBar.appendChild(closeButton);
+    windowDiv.appendChild(titleBar);
+
+    // Create the content of the window
+    const content = document.createElement("div");
+    content.classList.add("window-content");
+
+    // Use innerHTML to render content with HTML tags like <br> or <p>
+    content.innerHTML = boxContent[letter] || `<p>You clicked on ${letter}. No specific content defined for this letter.</p>`;
+    windowDiv.appendChild(content);
+
+    // Append the window to the body
+    document.body.appendChild(windowDiv);
+}
+
 </script>
 </body>
 </html>
