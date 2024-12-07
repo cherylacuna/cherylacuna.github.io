@@ -499,8 +499,7 @@ Reflection for the future of the time that it has served
         line.appendChild(sentenceElement);
         container.appendChild(line);
     }
-
-    function createWindow(letter) {
+function createWindow(letter) {
     // Generate random position within the viewport
     const randomX = Math.floor(Math.random() * (window.innerWidth - 320)); // Account for window width
     const randomY = Math.floor(Math.random() * (window.innerHeight - 200)); // Account for window height
@@ -512,19 +511,16 @@ Reflection for the future of the time that it has served
     windowDiv.style.left = `${randomX}px`;
     windowDiv.style.top = `${randomY}px`;
 
-    // Create the title bar
-    const titleBar = document.createElement("div");
-    titleBar.classList.add("title-bar");
-    titleBar.textContent = `${letter} is for...`;
-
-    // Make the window draggable
-    titleBar.addEventListener("mousedown", (e) => {
+    // Make the entire window draggable
+    windowDiv.addEventListener("mousedown", (e) => {
         let shiftX = e.clientX - windowDiv.getBoundingClientRect().left;
         let shiftY = e.clientY - windowDiv.getBoundingClientRect().top;
 
         function moveAt(pageX, pageY) {
-            windowDiv.style.left = pageX - shiftX + "px";
-            windowDiv.style.top = pageY - shiftY + "px";
+            const newLeft = Math.max(0, Math.min(window.innerWidth - windowDiv.offsetWidth, pageX - shiftX));
+            const newTop = Math.max(0, Math.min(window.innerHeight - windowDiv.offsetHeight, pageY - shiftY));
+            windowDiv.style.left = `${newLeft}px`;
+            windowDiv.style.top = `${newTop}px`;
         }
 
         function onMouseMove(event) {
@@ -538,7 +534,12 @@ Reflection for the future of the time that it has served
         }, { once: true });
     });
 
-    titleBar.ondragstart = () => false; // Disable default drag behavior
+    windowDiv.ondragstart = () => false; // Disable default drag behavior
+
+    // Create the title bar
+    const titleBar = document.createElement("div");
+    titleBar.classList.add("title-bar");
+    titleBar.textContent = `${letter} is for...`;
 
     // Create the close button
     const closeButton = document.createElement("button");
