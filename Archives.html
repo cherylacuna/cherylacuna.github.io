@@ -193,6 +193,21 @@
             font-size: 16px;
             line-height: 1.6;
         }
+.title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: grab; /* Indicates draggable behavior */
+}
+
+.title-bar:active {
+    cursor: grabbing; /* Changes cursor while dragging */
+}
 
     </style>
 </head>
