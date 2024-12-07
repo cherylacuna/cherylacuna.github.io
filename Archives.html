@@ -128,10 +128,98 @@
                 transform: scale(1);
             }
         }
+        /* Basic styles for the bubble and modal */
+
+/* The bubble */
+.bubble {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for rotation */
+}
+
+/* Add the rotation effect on hover */
+.bubble:hover {
+    transform: rotate(180deg); /* Rotate the bubble 180 degrees */
+}
+
+.question-mark {
+    color: white;
+    font-size: 30px;
+}
+
+/* The modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
     </style>
 </head>
 <body>
+    <!-- The question mark bubble -->
+    <div class="bubble" onclick="showInfo()">
+        <span class="question-mark">?</span>
+    </div>
+
+    <!-- The modal with information -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeInfo()">×</span>
+            <p>A is for Archive is a series of poems arranged from A to Z meant to introduce the young and young at heart to the archive and archival theory, practice, and history. It aims to serve as a primer for any child broadly interested in information. For this reason, A is for Archive is hosted online and utilizes exclusively open-source resources for maximum accessibility. A is for Archive is a product of the collaborative effort of Ashley Cole, Cheryl Acuna, and Noah Brockman.</p>
+        </div>
+    </div>
+    
     <div id="poem-container"></div>
+    <script>// Function to show the modal
+function showInfo() {
+    document.getElementById('infoModal').style.display = 'flex';
+}
+
+// Function to close the modal
+function closeInfo() {
+    document.getElementById('infoModal').style.display = 'none';
+}
+</script>'
     <script>
     const hoverColors = ["letter-pink", "letter-purple", "letter-orange", "letter-blue"];
     let colorIndex = 0; // Keeps track of the current color to apply
