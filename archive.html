@@ -3,227 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shop / archival inventory </title>
+    <title>inventory / scattered</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
             font-size: 10pt;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
             background-color: #fff;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 0;
+            padding: 50px;
+            overflow-x: hidden; /* Prevents stray items from causing scrollbars */
         }
 
         header {
-            border-bottom: 2px solid #000;
-            margin-bottom: 40px;
-            padding-bottom: 10px;
+            text-align: center;
+            border-bottom: 1px solid #000;
+            margin-bottom: 100px;
+            padding-bottom: 20px;
         }
 
-        h1 {
-            font-size: 14pt;
-            margin: 0;
-            text-transform: lowercase;
-            font-style: italic;
+        /* The Canvas */
+        .inventory-canvas {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 1500px; /* Gives you plenty of vertical room to scatter */
         }
 
-        nav {
-            margin-top: 10px;
-            font-size: 8pt;
-        }
-
-        nav a {
-            color: blue;
-            text-decoration: none;
-            margin-right: 15px;
-        }
-
-        /* Inventory Entry Styling */
-        .inventory-item {
-            display: flex;
-            gap: 30px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
-
-        .item-image {
-            flex: 0 0 250px;
-        }
-
-        .item-image img {
-            width: 100%;
-            height: auto;
-            border: 1px solid #eee;
-            display: block;
-        }
-
-        .item-details {
-            flex: 1;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11pt;
-            margin-bottom: 5px;
-        }
-
-        .item-id {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .item-price {
-            color: blue;
-            font-size: 9pt;
-            font-style: italic;
-            text-decoration: underline;
-            text-decoration-color: fuchsia;
-            text-decoration-style: dotted;
-        }
-
-        .status-tag {
-            font-size: 8pt;
-            padding: 2px 6px;
+        /* Individual Item Wrapper */
+        .item-wrapper {
+            position: absolute; /* Allows for the "scattering" */
             display: inline-block;
-            margin-bottom: 15px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease-in-out;
+            z-index: 1;
+        }
+
+        .item-wrapper:hover {
+            z-index: 10; /* Brings the hovered item to the front */
+            transform: scale(1.05);
+        }
+
+        .item-wrapper img {
+            width: 180px; /* Smaller, varying sizes feel more scattered */
+            height: auto;
+            display: block;
+            border: 1px solid #ddd;
+            filter: grayscale(10%) contrast(90%);
+        }
+
+        /* Label Styling */
+        .label {
+            display: block;
+            margin-top: 8px;
+            font-size: 9pt;
+            background: #fff; /* Ensures text is readable if items are close */
+        }
+
+        .catalog-code {
             font-weight: bold;
-        }
-
-        .available {
-            background-color: cyan;
-            color: white;
-        }
-
-        .sold {
-            background-color: #eee;
-            color: #999;
-            text-decoration: line-through;
-        }
-
-        blockquote {
-            border-left: 4px solid fuchsia;
-            padding-left: 10px;
-            margin: 10px 0;
-            font-style: italic;
-            color: #555;
-            text-transform: lowercase;
-        }
-
-        .metadata-list {
-            margin: 15px 0;
-            font-size: 9pt;
-            text-align: justify;
-        }
-
-        .cta-group {
-            margin-top: 20px;
-        }
-
-        .button-buy {
-            background: #222;
-            color: #fff;
-            padding: 6px 16px;
-            text-decoration: none;
-            font-size: 9pt;
-            border-radius: 2px;
-        }
-
-        .button-buy:hover {
-            background: fuchsia;
-        }
-
-        .link-inquiry {
-            font-size: 8pt;
             color: blue;
-            margin-left: 15px;
-            text-decoration: none;
-            font-style: italic;
         }
 
-        @media (max-width: 600px) {
-            .inventory-item {
-                flex-direction: column;
-            }
-            .item-image {
-                flex: 0 0 auto;
-            }
+        /* The hidden detail that reveals on hover */
+        .detail-text {
+            display: block;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, color 0.3s ease;
+            font-size: 8pt;
+            text-transform: uppercase;
+            color: transparent;
+            margin-top: 2px;
         }
+
+        .item-wrapper:hover .detail-text {
+            max-height: 40px; /* Expands to show the title */
+            color: fuchsia;
+            border-top: 1px dotted fuchsia;
+            padding-top: 2px;
+        }
+
+        /* Scattering Classes - Apply these to your items manually */
+        /* You can adjust these % values to move things around the screen */
+        .pos-1 { top: 0; left: 10%; }
+        .pos-2 { top: 150px; left: 55%; }
+        .pos-3 { top: 350px; left: 25%; }
+        .pos-4 { top: 500px; left: 70%; }
+        .pos-5 { top: 750px; left: 15%; }
+        .pos-6 { top: 900px; left: 50%; }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>archival inventory / reselling</h1>
-            <nav>
-                <a href="index.html">← back to blog</a>
-                <a href="https://instagram.com/your-ig">instagram</a>
-                <a href="mailto:your-email@example.com">contact</a>
-            </nav>
-        </header>
+    <header>
+        <h1>archival inventory: cheryl acuna</h1>
+        <p style="font-size: 8pt; letter-spacing: 2px;">[CLICK RECORD FOR FULL PROVENANCE]</p>
+    </header>
 
-        <main>
-            <!-- Start Item 001 -->
-            <div class="inventory-item">
-                <div class="item-image">
-                    <img src="path/to/image.jpg" alt="Description of item">
-                </div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-id">[INV-001]</span>
-                        <span class="item-price">$45.00</span>
-                    </div>
-                    <div class="status-tag available">AVAILABLE</div>
-                    
-                    <blockquote>Provenance & Description</blockquote>
-                    
-                    <div class="metadata-list">
-                        <strong>Title:</strong> Niche Archival Book / Item Name<br>
-                        <strong>Year:</strong> c. 1970<br>
-                        <strong>Condition:</strong> Excellent vintage condition. Slight yellowing to the edges of the pages, consistent with age.<br>
-                        <br>
-                        Collected from a private library in Glendale. Features rare plate illustrations and a linen-bound cover.
-                    </div>
+    <div class="inventory-canvas">
 
-                    <div class="cta-group">
-                        <a href="https://buy.stripe.com/example" class="button-buy">Purchase</a>
-                        <a href="https://ig.me/m/your-username" class="link-inquiry">Inquire via DM</a>
-                    </div>
-                </div>
+        <!-- Item 001 -->
+        <a href="item-001.html" class="item-wrapper pos-1">
+            <img src="Blog/1994.jpg" alt="Item 001">
+            <div class="label">
+                <span class="catalog-code">[001]</span>
+                <span class="detail-text">MISHIMA, YUKIO. "SUN & STEEL", 1954.</span>
             </div>
-            <!-- End Item 001 -->
+        </a>
 
-            <!-- Start Item 002 (Sold Example) -->
-            <div class="inventory-item">
-                <div class="item-image">
-                    <img src="path/to/sold-image.jpg" alt="Sold Item" style="opacity: 0.6;">
-                </div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-id">[INV-002]</span>
-                        <span class="item-price">SOLD</span>
-                    </div>
-                    <div class="status-tag sold">PRIVATE COLLECTION</div>
-                    
-                    <blockquote>archival record</blockquote>
-                    
-                    <div class="metadata-list">
-                        <strong>Title:</strong> Rare Band Tee / Blimp Merch (1st Press)<br>
-                        <strong>Note:</strong> This item is no longer for sale but remains here as part of the digital archive.
-                    </div>
-                </div>
+        <!-- Item 002 -->
+        <a href="item-002.html" class="item-wrapper pos-2">
+            <img src="Blog/Rose.png" alt="Item 002">
+            <div class="label">
+                <span class="catalog-code">[002]</span>
+                <span class="detail-text">PRADA. "DISTRESSED RIBBON MARY JANE", 2003</span>
             </div>
-            <!-- End Item 002 -->
+        </a>
 
-        </main>
+        <!-- Item 003 -->
+        <a href="item-003.html" class="item-wrapper pos-3">
+            <img src="Blog/PXL_20250404_010153759.jpg" alt="Item 003">
+            <div class="label">
+                <span class="catalog-code">[003]</span>
+                <span class="detail-text">BLIMP. "SACCHARINE" MUSIC VIDEO STAMP, 2026</span>
+            </div>
+        </a>
+
+        <!-- Item 004 -->
+        <a href="item-004.html" class="item-wrapper pos-4">
+            <img src="images/rare-book-thumb.jpg" alt="Item 004">
+            <div class="label">
+                <span class="catalog-code">[004]</span>
+                <span class="detail-text">DERRIDA. "ARCHIVE FEVER", FIRST EDITION PAPERBACK</span>
+            </div>
+        </a>
+
+        <!-- Add more items by incrementing the pos- class or the ID -->
+
     </div>
 
 </body>
