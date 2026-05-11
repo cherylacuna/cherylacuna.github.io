@@ -10,28 +10,57 @@
             font-size: 10pt;
             background-color: #fff;
             margin: 0;
-            padding: 50px;
-            overflow-x: hidden; /* Prevents stray items from causing scrollbars */
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
         }
 
         header {
             text-align: center;
             border-bottom: 1px solid #000;
-            margin-bottom: 100px;
+            margin-bottom: 80px;
             padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 14pt;
+            margin: 0;
+            text-transform: lowercase;
+            font-style: italic;
+        }
+
+        nav {
+            margin-top: 10px;
+            font-size: 8pt;
+        }
+
+        nav a {
+            color: blue;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            text-decoration-color: fuchsia;
+            text-decoration-style: dotted;
         }
 
         /* The Canvas */
         .inventory-canvas {
             position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 1500px; /* Gives you plenty of vertical room to scatter */
+            width: 100%;
+            min-height: 1800px; /* Adjust height based on how many items you add */
         }
 
         /* Individual Item Wrapper */
         .item-wrapper {
-            position: absolute; /* Allows for the "scattering" */
+            position: absolute;
             display: inline-block;
             text-decoration: none;
             color: inherit;
@@ -40,16 +69,16 @@
         }
 
         .item-wrapper:hover {
-            z-index: 10; /* Brings the hovered item to the front */
+            z-index: 10;
             transform: scale(1.05);
         }
 
         .item-wrapper img {
-            width: 180px; /* Smaller, varying sizes feel more scattered */
+            width: 200px; /* Base width; you can vary this per item */
             height: auto;
             display: block;
-            border: 1px solid #ddd;
-            filter: grayscale(10%) contrast(90%);
+            border: 1px solid #eee;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
         }
 
         /* Label Styling */
@@ -57,7 +86,8 @@
             display: block;
             margin-top: 8px;
             font-size: 9pt;
-            background: #fff; /* Ensures text is readable if items are close */
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2px;
         }
 
         .catalog-code {
@@ -65,83 +95,100 @@
             color: blue;
         }
 
-        /* The hidden detail that reveals on hover */
+        /* Hover Reveal Text */
         .detail-text {
             display: block;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, color 0.3s ease;
+            transition: max-height 0.4s ease, color 0.4s ease;
             font-size: 8pt;
             text-transform: uppercase;
             color: transparent;
             margin-top: 2px;
+            line-height: 1.2;
         }
 
         .item-wrapper:hover .detail-text {
-            max-height: 40px; /* Expands to show the title */
+            max-height: 50px; 
             color: fuchsia;
             border-top: 1px dotted fuchsia;
-            padding-top: 2px;
+            padding-top: 4px;
         }
 
-        /* Scattering Classes - Apply these to your items manually */
-        /* You can adjust these % values to move things around the screen */
-        .pos-1 { top: 0; left: 10%; }
-        .pos-2 { top: 150px; left: 55%; }
-        .pos-3 { top: 350px; left: 25%; }
-        .pos-4 { top: 500px; left: 70%; }
-        .pos-5 { top: 750px; left: 15%; }
-        .pos-6 { top: 900px; left: 50%; }
+        /* SCATTER COORDINATES */
+        /* Change these values to move items around the page */
+        .pos-1 { top: 50px; left: 5%; }
+        .pos-2 { top: 120px; left: 60%; }
+        .pos-3 { top: 400px; left: 15%; }
+        .pos-4 { top: 550px; left: 55%; }
+        .pos-5 { top: 800px; left: 10%; }
+        .pos-6 { top: 950px; left: 65%; }
 
+        @media (max-width: 600px) {
+            .inventory-canvas {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: auto;
+            }
+            .item-wrapper {
+                position: static;
+                margin-bottom: 50px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>archival inventory: cheryl acuna</h1>
-        <p style="font-size: 8pt; letter-spacing: 2px;">[CLICK RECORD FOR FULL PROVENANCE]</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>archival inventory / cheryl acuna</h1>
+            <nav>
+                <a href="index.html">← back to blog</a>
+                <a href="https://instagram.com/your-ig">instagram</a>
+                <a href="mailto:your-email@example.com">contact</a>
+            </nav>
+        </header>
 
-    <div class="inventory-canvas">
+        <div class="inventory-canvas">
 
-        <!-- Item 001 -->
-        <a href="item-001.html" class="item-wrapper pos-1">
-            <img src="Blog/1994.jpg" alt="Item 001">
-            <div class="label">
-                <span class="catalog-code">[001]</span>
-                <span class="detail-text">MISHIMA, YUKIO. "SUN & STEEL", 1954.</span>
-            </div>
-        </a>
+            <!-- Item 001 -->
+            <a href="item-001.html" class="item-wrapper pos-1">
+                <img src="path/to/image1.jpg" alt="[001]">
+                <div class="label">
+                    <span class="catalog-code">[001]</span>
+                    <span class="detail-text">MISHIMA, YUKIO. "SUN & STEEL", 1954.</span>
+                </div>
+            </a>
 
-        <!-- Item 002 -->
-        <a href="item-002.html" class="item-wrapper pos-2">
-            <img src="Blog/Rose.png" alt="Item 002">
-            <div class="label">
-                <span class="catalog-code">[002]</span>
-                <span class="detail-text">PRADA. "DISTRESSED RIBBON MARY JANE", 2003</span>
-            </div>
-        </a>
+            <!-- Item 002 -->
+            <a href="item-002.html" class="item-wrapper pos-2">
+                <img src="path/to/image2.jpg" alt="[002]">
+                <div class="label">
+                    <span class="catalog-code">[002]</span>
+                    <span class="detail-text">PRADA. "DISTRESSED RIBBON MARY JANE", 2003</span>
+                </div>
+            </a>
 
-        <!-- Item 003 -->
-        <a href="item-003.html" class="item-wrapper pos-3">
-            <img src="Blog/PXL_20250404_010153759.jpg" alt="Item 003">
-            <div class="label">
-                <span class="catalog-code">[003]</span>
-                <span class="detail-text">BLIMP. "SACCHARINE" MUSIC VIDEO STAMP, 2026</span>
-            </div>
-        </a>
+            <!-- Item 003 -->
+            <a href="item-003.html" class="item-wrapper pos-3">
+                <img src="path/to/image3.jpg" alt="[003]">
+                <div class="label">
+                    <span class="catalog-code">[003]</span>
+                    <span class="detail-text">BLIMP. "SACCHARINE" MUSIC VIDEO STAMP, 2026</span>
+                </div>
+            </a>
 
-        <!-- Item 004 -->
-        <a href="item-004.html" class="item-wrapper pos-4">
-            <img src="images/rare-book-thumb.jpg" alt="Item 004">
-            <div class="label">
-                <span class="catalog-code">[004]</span>
-                <span class="detail-text">DERRIDA. "ARCHIVE FEVER", FIRST EDITION PAPERBACK</span>
-            </div>
-        </a>
+            <!-- Item 004 -->
+            <a href="item-004.html" class="item-wrapper pos-4">
+                <img src="path/to/image4.jpg" alt="[004]">
+                <div class="label">
+                    <span class="catalog-code">[004]</span>
+                    <span class="detail-text">THOMAS PYNCHON. "THE CRYING OF LOT 49", 1966.</span>
+                </div>
+            </a>
 
-        <!-- Add more items by incrementing the pos- class or the ID -->
-
+        </div>
     </div>
 
 </body>
